@@ -12,7 +12,8 @@ Our construction of the Markov chain differs from  Bana, Gergei, et al. We descr
 Let $t(i,j)$ denote the transition probability from candidates $i$ to $j$. Let $n$ denote the number of candidates, and $d$ denote a hyper-parameter which is analogous to the damping factor used in PageRank.
 
 We compute $t(i,j)$ where $i \neq j$ as follows: First we compute $p_{ji}$: the proportion of voters who prefer j to i. Then
-$$t(i,j) = 
+$$
+t(i,j) = 
 (1-d) \cdot \frac{p_{ji}}{n-1} 
 +d \cdot \frac{1}{n}
 $$
