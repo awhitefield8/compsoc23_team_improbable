@@ -12,7 +12,7 @@ from compsoc.voting_rules.dowdall import dowdall_rule
 from compsoc.voting_rules.simpson import simpson_rule
 
 #my rules
-from my_rules import mod_convergence_rule
+from my_rules import mod_convergence_rule, mod_convergence_rule2,mod_convergence_rule3
 
 
 def voter_subjective_utility_for_elected_candidate(elected: List[int], vote: Tuple[int],
@@ -91,10 +91,6 @@ def get_rule_utility(profile: Profile,
 
 
 
-
-
-
-
 def my_evaluate_voting_rules(num_candidates: int,
                           num_voters: int,
                           topn: int,
@@ -123,14 +119,16 @@ def my_evaluate_voting_rules(num_candidates: int,
     copeland_rule.__name__ = "Copeland"
     dowdall_rule.__name__ = "Dowdall"
     simpson_rule.__name__ = "Simpson"
-    mod_convergence_rule.__name__ = "Mod Convergence" #my addition
+    mod_convergence_rule.__name__ = "ModConv 1" #my addition
+    mod_convergence_rule2.__name__ = "ModConv 2" #my addition
+    mod_convergence_rule3.__name__ = "ModConv 3 " #my addition
 
-    rules = [borda_rule, copeland_rule, dowdall_rule, simpson_rule, mod_convergence_rule]
+    rules = [borda_rule, copeland_rule, dowdall_rule, simpson_rule, mod_convergence_rule,mod_convergence_rule2,mod_convergence_rule3]
     # Adding some extra Borda variants, with decay parameter
-    for gamma in [1.0, 0.99, 0.75, 0.6, 0.25, 0.01]:
-        gamma_rule = get_borda_gamma(gamma)
-        gamma_rule.__name__ = f"Borda Gamma({gamma})"
-        rules.append(gamma_rule)
+    #for gamma in [1.0, 0.99, 0.75, 0.6, 0.25, 0.01]:
+    #    gamma_rule = get_borda_gamma(gamma)
+    #    gamma_rule.__name__ = f"Borda Gamma({gamma})"
+    #    rules.append(gamma_rule)
 
     result = {}
     for rule in rules:

@@ -21,7 +21,7 @@ Kemeny-young as it's pretty elegant. But it's NP-hard, so let's approximate it.
 - return result
 
 #### improvements
-- firts check if pairwise election graph is DAG. If so, return topological order.
+- first check if pairwise election graph is DAG. If so, return topological order.
 - trade off voters and alturnatives (i.e. consider fewer alturnatives)
 
 ### Approach 2:
@@ -35,9 +35,10 @@ Kemeny-young as it's pretty elegant. But it's NP-hard, so let's approximate it.
 - ILP relaxation (e.g. solve with regression)
 
 ### Approach 3:
-#### summary: modified convergence voting
+#### summary: We modify convergence voting proposed by Bana, Gergei, et al.
 
-### Approach 4:
 
-#### summary: combine 1 and 2
 
+## References
+
+- Bana, Gergei, et al. "Convergence Voting: From Pairwise Comparisons to Consensus." arXiv preprint arXiv:2102.01995 (2021).
