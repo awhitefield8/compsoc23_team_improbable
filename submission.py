@@ -1,5 +1,4 @@
 import numpy as np
-import random
 from compsoc.profile import Profile
 
 #copy my submission below
@@ -15,10 +14,10 @@ def mod_convergence_rule_v3(profile: Profile, candidate: int) -> int:
     :return: The score for the candidate.
     :rtype: int
     """
-    #useful objects
+    #hyperperams
     iterations = 100
     anneal = 0.1
-    #v = np.zeros(len(profile.candidates)) + (1/len(profile.candidates))
+    #setup
     v = np.array([1] + [0]*(len(profile.candidates) - 1))
     S = np.eye(len(profile.candidates)) #initialise S
     #input edges of stochastic matrix

@@ -1,6 +1,5 @@
 # Team improbable: COMPSOC 2023
 
-
 ## Voting rule summary
 
 We use ideas from Rank Centrality and Convergence voting to contruct a voting rule. The voting rule uses voter preference orderings to build a Markov Chain between candidates. The score returned by the voting rule is the steady state probabilities for the candidates in the constructed Markov Chain. We refer to our voting rule as Modified Convergence voting.
@@ -9,21 +8,19 @@ We use ideas from Rank Centrality and Convergence voting to contruct a voting ru
 
 ### Construction of the Markov chain
 
-Let $t(i,j)$ denote the transition probability from candidates $i$ to $j$. Let $n$ denote the number of candidates, and $d$ denote a hyper-parameter which is analogous to the damping factor used in PageRank.
+Let $t(i,j)$ denote the transition probability from candidate $i$ to $j$. Let $n$ denote the number of candidates, and $d$ denote a hyper-parameter which is analogous to the damping factor used in PageRank.
 
-We compute $t(i,j)$ where $i \neq j$ as follows: First we compute $p_{ji}$: the proportion of voters who prefer j to i. Then
+We compute $t(i,j)$ where $i \neq j$ as follows: First we compute $p_{ji}$: the proportion of voters who prefer j to i. Then we set:
 $$
-t(i,j) = 
+t(i,j) := 
 (1-d) \cdot \frac{p_{ji}}{n-1} 
 +d \cdot \frac{1}{n}
 $$
-Given the computations of $t(i,j)$ where $i \neq j$, $t(i,i)$ is determined by the constraints of the stochastic matrix (rows and columns must add to 1).
+Given the computations of $t(i,j)$ where $i \neq j$, $t(i,i)$ is determined by the constraints of the stochastic matrix (rows and columns must add to 1). We set $d = 0.1$ in our submission.
 
 ### Scores assigned to candidates
 
-Note that this Markov Chain is aperiod and irreducible. Therefore, the exist steady state probabilities corresponding to each candidate. Moreover, we can quickly estimate the steady state probabilities using matrix multiplication. 
-
-The score for candidate $i$ is the steady state probability of candidate $i$.
+Note that this Markov Chain is aperiodic and irreducible. Therefore, the exist steady state probabilities corresponding to each candidate. Moreover, we can quickly estimate the steady state probabilities using matrix multiplication. The score for candidate $i$ is the steady state probability of candidate $i$.
 
 ### Interpretation of Modified Convergence voting
 
@@ -33,7 +30,13 @@ Suppose we repeat this procedure, and record the amount of periods we spend on e
 
 ## Expected properties of Modified Convergence voting
 
-TBD
+Our voting rule satisfies the following properties: Anonymity, Neutrality, No Dictatorship. Non-imposition, Pareto Efficiency, Monotonicity and the Majority critereon.
+
+It does not satisfy the following properties: Condorcet critereon and IIA.
+
+### Social welfare performance 
+
+The relative performance of Modified Converge voting depends on the model of voter utility. If the mass of voter utility is weighted towards their top candidate, we expect voting rules such as Plurality or Dowdall to do well. If the mass of voter utility is spread across alternatives, we expect Modified Convergence voting to do well. 
 
 ## References
 
